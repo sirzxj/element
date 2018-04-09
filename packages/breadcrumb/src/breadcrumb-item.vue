@@ -1,6 +1,9 @@
 <template>
   <span class="el-breadcrumb__item">
-    <span class="el-breadcrumb__inner" ref="link" role="link">
+    <span
+      :class="['el-breadcrumb__inner', to ? 'is-link' : '']"
+      ref="link"
+      role="link">
       <slot></slot>
     </span>
     <i v-if="separatorClass" class="el-breadcrumb__separator" :class="separatorClass"></i>
@@ -33,7 +36,7 @@
         link.addEventListener('click', _ => {
           let to = this.to;
           self.replace ? self.$router.replace(to)
-                       : self.$router.push(to);
+            : self.$router.push(to);
         });
       }
     }
